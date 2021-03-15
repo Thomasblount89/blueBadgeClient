@@ -10,13 +10,13 @@ const [movies, setMovies] = useState([]);
     useEffect(() => {
         fetch(featured_API)
           .then(res => res.json())
-          .then(data => { console.log(data);
+          .then(data => { console.log(data)
             setMovies(data.results)});
       }, []);
 
     return(
     
-        <div className='movie-container'>
+        <div  className='movie-container'>
           {movies.length > 0 && movies.map(movie => (
           <Movie key={movie.id} {...movie}/>
          ))};
