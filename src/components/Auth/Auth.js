@@ -54,7 +54,7 @@ const Auth = (props) => {
         <div>
             <label htmlFor='firstName'>First Name:</label>
             <br />
-            <input type='text' id='firstName' value={firstName} onchange={e => setFirstName(e.target.value)} /> 
+            <input type='text' id='firstName' value={firstName} onChange={e => setFirstName(e.target.value)} /> 
             <br />
             <label htmlFor='lastName'>Last Name:</label>
             <br />
@@ -71,7 +71,9 @@ return(
             <br />
             <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} /> 
             <br />
-            <label htmlFor='password' value={password} onChange={e => setPassword(e.target.value)} />
+            <label htmlFor='password'>Password: </label>
+            <br />
+            <input type='text' id='password' value={password} onChange={e => setPassword(e.target.value)} />
             <br />
             <button onClick={loginToggle}>Login/Signup Toggle</button>
             <br />
