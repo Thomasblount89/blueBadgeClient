@@ -14,7 +14,7 @@ const SingleMovie = props => {
                     <p>{props.singleMovie.overview}</p>
                 </div>
             </div>
-            <button onClick={() => props.setToggleSingleMovie(false)}>Exit</button>
+            <button onClick={() => props.setToggleSingleMovie(false)}>Home</button>
         </div>
     )
 }

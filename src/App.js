@@ -8,7 +8,7 @@ const [sessionToken, setSessionToken] = useState(undefined);
 console.log(sessionToken);
 
   return (
-    <div className="App">
+    <div className='root' >
       <MovieFlix />
     </div>
   );

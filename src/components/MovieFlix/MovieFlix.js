@@ -20,7 +20,7 @@ console.log(singleMovie);
 
     return(
     
-        <div className='movie-container'>
+        <div >
          {
              toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} /> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} />
          }
