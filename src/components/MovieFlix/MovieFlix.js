@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import Movie from './Movie'
+import DisplayMovies from './DisplayMovies/DisplayMovies';
+import SingleMovie from './SingleMovie/SingleMovie';
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
@@ -9,6 +10,7 @@ const [movies, setMovies] = useState([]);
 const [singleMovie, setSingleMovie] = useState({});
 const [toggleSingleMovie, setToggleSingleMovie] = useState(false);
 console.log(singleMovie);
+
     useEffect(() => {
         fetch(featured_API)
           .then(res => res.json())
@@ -19,13 +21,11 @@ console.log(singleMovie);
     return(
     
         <div className='movie-container'>
-          {movies.length > 0 && movies.map(movie => (
-          <Movie key={movie.id} movie={movie} setSingleMovie={setSingleMovie}/>
-         ))};
+         {
+             toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} /> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} />
+         }
         </div>
     )
 }
 
 export default MovieFlix;
-
-
