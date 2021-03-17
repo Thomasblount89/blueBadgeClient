@@ -3,7 +3,7 @@ const IMG_API = `https://image.tmdb.org/t/p/w1280`
 const DisplayMovies = props => {
     console.log(props)
     return (
-        <div>
+        <div className='movie-container'>
             {
                 props.movies.map(movie => (
                     <div className='movie' key={movie.id} onClick={() => {props.setSingleMovie(movie); props.setToggleSingleMovie(true)}}>

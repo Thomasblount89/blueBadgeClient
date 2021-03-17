@@ -1,3 +1,5 @@
+import Reviews from './Reviews/Reviews';
+import DisplayReviews  from '../SingleMovie/Reviews/DisplayReviews/DisplayReviews';
 const IMG_API = `https://image.tmdb.org/t/p/w1280`;
 
 const SingleMovie = props => {
@@ -13,6 +15,16 @@ const SingleMovie = props => {
                     <h2>Overview:</h2>
                     <p>{props.singleMovie.overview}</p>
                 </div>
+            </div>
+            <div className='review-create'>
+                {
+                    <Reviews movieId={props.singleMovie.id}/>
+                }
+            </div>
+            <div className='review-display'>
+                {
+                    <DisplayReviews movieId={props.singleMovie.id} />
+                }
             </div>
             <button onClick={() => props.setToggleSingleMovie(false)}>Exit</button>
         </div>
