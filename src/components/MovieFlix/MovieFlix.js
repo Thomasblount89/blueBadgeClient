@@ -19,12 +19,12 @@ console.log(singleMovie);
       }, []);
 
     return(
-    
-        <div >
+        <>
          {
              toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} /> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} />
          }
-        </div>
+        </>
+        
     )
 }
 
