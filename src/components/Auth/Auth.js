@@ -1,6 +1,5 @@
 import {useState} from 'react';
-
-
+import MovieFlix from '../MovieFlix/MovieFlix';
 
 const Auth = (props) => {
     console.log(props)
@@ -10,6 +9,7 @@ const Auth = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
+    const [userId, setUserId] = useState('');
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -32,7 +32,9 @@ const Auth = (props) => {
         })
         .then(response => response.json())
         .then(json => props.updateToken(json.token))
+       // .then(json => {console.log(json.user)})
     }
+    console.log(userId);
 
     const title = () => {
         return login ? 'Login' : 'Signup';
@@ -81,6 +83,7 @@ return(
             <br />
             <button type='submit'>Submit User Data</button>
         </form>
+        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}/> 
         </div>
 
 );

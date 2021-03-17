@@ -19,13 +19,14 @@ const SingleReview = (props) => {
         }).then((res) => res.json())
         .then((logData) => {
             console.log(logData);
-            setTitle('');
-            setNewReview('');
+            setReviewToggle(false);
+            //fetchReviews();
+
         })
     }
 
     return(
-        <div>
+        <div className="leaveReview">
             {
                 reviewToggle ? 
                 <form onSubmit={handleSubmit}>
@@ -36,7 +37,7 @@ const SingleReview = (props) => {
                     <br />
                     <label htmlFor='review'>Review: </label>
                     <br />
-                    <input type='text' id='review' value={newReview} onChange={e => setNewReview(e.target.value)} />
+                    <textarea rows="6" cols="70" id='review' value={newReview} onChange={e => setNewReview(e.target.value)} />
                     <br />
                     <button type='submit'>Submit</button>
                     <button onClick={() => setReviewToggle(false)}>Back</button>

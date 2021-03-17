@@ -56,7 +56,7 @@ const DisplayReviews = (props) =>{
                         <p>{reviews.reviewersPost}</p>
                         <button onClick={() => {deleteReview(reviews)}}>Delete</button>
                         <ReviewEdit reviewTitle={reviews.reviewTitle} reviewersPost={reviews.reviewersPost}
-                            token={props.token} reviewId={reviews.id} />
+                            token={props.token} reviewId={reviews.id} fetchReviews={fetchReviews}/>
                         {/* <button onClick={!setUpdateActive}>Edit</button>
                         {
                             updateActive ? <ReviewEdit reviewToUpdate={reviewToUpdate} updateOff={updateOff} 

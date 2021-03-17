@@ -27,11 +27,12 @@ const clearToken = () => {
 
   return (
     <div className="App">
-     <MovieFlix clickLogout={clearToken} token={sessionToken}/> 
-     <Auth updateToken={updateToken}/> 
+     {/* <MovieFlix clickLogout={clearToken} token={sessionToken}/>  */}
+     <Auth updateToken={updateToken} clickLogout={clearToken} token={sessionToken}/> 
       <button onClick={clearToken}>clearToken</button>
     </div>
   );
 }
 
 export default App;
+
