@@ -16,6 +16,7 @@ const DisplayMovies = props => {
                             <h2>Overview:</h2>
                             <p>{movie.overview}</p>
                         </div>
+                        
                     </div>
                 ))
             }

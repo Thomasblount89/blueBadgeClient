@@ -9,15 +9,16 @@ function App() {
 const [sessionToken, setSessionToken] = useState('');
 useEffect (() => {
   if (localStorage.getItem('token')){
-    setSessionToken (localStorage.getItem('token'));
+    setSessionToken(localStorage.getItem('token'));
   }
 }, [])
 
-const updateToken = (newToken => {
+const updateToken = (newToken) => {
   localStorage.setItem('token', newToken);
   setSessionToken(newToken);
+  console.log(newToken);
   console.log(sessionToken);
-})
+}
 
 const clearToken = () => {
   localStorage.clear();
@@ -26,9 +27,9 @@ const clearToken = () => {
 
   return (
     <div className="App">
-     <MovieFlix clickLogout={clearToken} /> 
+     <MovieFlix clickLogout={clearToken} token={sessionToken}/> 
      <Auth updateToken={updateToken}/> 
-      
+      <button onClick={clearToken}>clearToken</button>
     </div>
   );
 }

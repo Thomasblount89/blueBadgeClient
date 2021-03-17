@@ -4,7 +4,8 @@ import SingleMovie from './SingleMovie/SingleMovie';
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
-const MovieFlix = () => { 
+const MovieFlix = (props) => { 
+console.log(props.token);
 
 const [movies, setMovies] = useState([]);
 const [singleMovie, setSingleMovie] = useState({});
@@ -23,7 +24,7 @@ const [toggleLogout, setToggleLogout] = useState(false);
      <div className='movie-container'>
     
          {
-             toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} /> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} />
+             toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} token={props.token}/> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} token={props.token}/>
          }
 {/*         
         <div>

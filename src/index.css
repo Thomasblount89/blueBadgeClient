@@ -30,6 +30,24 @@ body{
 
 }
 
+.singleMovie{
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  justify-content: space-between;
+}
+
+#singleMovie{
+  height: 530px;
+}
+
+
+.single-movieContent{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
 .movie{
   background-color: #373b69;
   border-radius: 3px;
