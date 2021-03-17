@@ -1,6 +1,7 @@
 import {useState} from 'react';
 
 
+
 const Auth = (props) => {
     console.log(props)
 
@@ -30,7 +31,7 @@ const Auth = (props) => {
             })
         })
         .then(response => response.json())
-        .then(json => props.updateLocalStorage(json.token))
+        .then(json => props.updateToken(json.token))
     }
 
     const title = () => {
@@ -63,7 +64,8 @@ const Auth = (props) => {
     ) : null;
 
 return(
-    <div>
+        
+        <div> 
         <form onSubmit={handleSubmit}>
             <h1>{title()}</h1>
             {signupFields()}
@@ -79,7 +81,8 @@ return(
             <br />
             <button type='submit'>Submit User Data</button>
         </form>
-    </div>
+        </div>
+
 );
 
 };
