@@ -5,27 +5,30 @@ import {useState, useEffect} from 'react';
 
 
 function App() {
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setSessionToken(localStorage.getItem('token'));
-    }
-  }, []);
-  
-  const updateLocalStorage = newToken => {
-    localStorage.setItem('token', newToken);
-    setSessionToken(newToken);
+
+const [sessionToken, setSessionToken] = useState('');
+useEffect (() => {
+  if (localStorage.getItem('token')){
+    setSessionToken (localStorage.getItem('token'));
   }
-  
-  const clearLocalStorage = () => {
-    localStorage.clear();
-    setSessionToken(undefined);
-  }
-const [sessionToken, setSessionToken] = useState(undefined);
-console.log(sessionToken);
+}, [])
+
+const updateToken = (newToken => {
+  localStorage.setItem('token', newToken);
+  setSessionToken(newToken);
+  console.log(sessionToken);
+})
+
+const clearToken = () => {
+  localStorage.clear();
+  setSessionToken('');
+}
 
   return (
     <div className="App">
-      <MovieFlix />
+     <MovieFlix clickLogout={clearToken} /> 
+     <Auth updateToken={updateToken}/> 
+      
     </div>
   );
 }

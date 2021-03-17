@@ -4,12 +4,13 @@ import SingleMovie from './SingleMovie/SingleMovie';
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
-const MovieFlix = () => {
+const MovieFlix = () => { 
 
 const [movies, setMovies] = useState([]);
 const [singleMovie, setSingleMovie] = useState({});
 const [toggleSingleMovie, setToggleSingleMovie] = useState(false);
 console.log(singleMovie);
+const [toggleLogout, setToggleLogout] = useState(false);
 
     useEffect(() => {
         fetch(featured_API)
@@ -19,12 +20,18 @@ console.log(singleMovie);
       }, []);
 
     return(
+     <div className='movie-container'>
     
-        <div className='movie-container'>
          {
              toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} /> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} />
          }
-        </div>
+{/*         
+        <div>
+             {/* <Button onClick={props.clickLogout}>Logout</Button>  
+        </div> */}
+     </div>
+
+        
     )
 }
 
