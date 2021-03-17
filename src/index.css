@@ -103,6 +103,6 @@ header{
 .nav{
   font-size: 30px ;
   margin: 0;
-  
+  cursor: pointer;
 }
 
