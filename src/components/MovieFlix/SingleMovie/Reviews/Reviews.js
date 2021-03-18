@@ -9,7 +9,7 @@ const SingleReview = (props) => {
 
         const handleSubmit = e => {
         e.preventDefault();
-        fetch('http://localhost:3001/review/post', {          //movie id = props.id
+        fetch('http://localhost:3001/review/post', {          
             method: 'POST',
             body: JSON.stringify({reviewTitle: title, reviewersPost: newReview, movie_id: props.movieId}),
             headers: new Headers({
@@ -20,8 +20,6 @@ const SingleReview = (props) => {
         .then((logData) => {
             console.log(logData);
             setReviewToggle(false);
-            //fetchReviews();
-
         })
     }
 

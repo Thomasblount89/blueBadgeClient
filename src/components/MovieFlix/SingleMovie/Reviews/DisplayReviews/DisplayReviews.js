@@ -2,18 +2,14 @@ import {useState, useEffect} from 'react';
 import ReviewEdit from '../ReviewEdit';
 
 const DisplayReviews = (props) =>{
-    //console.log(props.movieId);
-    //console.log(props.token);
     console.log(props.userId);
     const [reviews, setReviews] = useState([]);
-    //const [updateActive, setUpdateActive] = useState(false);
     
     const fetchReviews = () => {
         fetch(`http://localhost:3001/review/${props.movieId}`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
-                //'Authorization': props.token
             })
         }).then((res) => res.json())
         .then((data) => {
@@ -46,7 +42,6 @@ const DisplayReviews = (props) =>{
                     <div key={index}>
                         <h4>{reviews.reviewTitle}</h4>
                         <p>{reviews.reviewersPost}</p>
-                        {/* <button onClick={!setUpdateActive}>Edit</button> */}
                         {
                             reviews.owner_id == props.userId ? 
                                 <>

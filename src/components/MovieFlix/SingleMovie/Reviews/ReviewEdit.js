@@ -8,7 +8,6 @@ const ReviewEdit = (props) => {
         e.preventDefault();
         console.log("in reviewToUpdate");
         console.log(props.reviewId);
-        //console.log(review);
         fetch(`http://localhost:3001/review/${props.reviewId}`, {
             method:"PUT",
             body: JSON.stringify({reviewTitle: editTitle, reviewersPost: editReview}),

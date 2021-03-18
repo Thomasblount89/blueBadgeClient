@@ -2,7 +2,7 @@ import {useState} from 'react';
 import MovieFlix from '../MovieFlix/MovieFlix';
 
 const Auth = (props) => {
-    console.log(props)
+    
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -13,37 +13,42 @@ const Auth = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-
-        let reqBody = login ? { email: email, password: password} : {
-            firstName:firstName,
-            lastName: lastName,
-            email: email,
-            password: password
-        };
-
-        let url = login ? 'http://localhost:3001/user/login':'http://localhost:3001/user/register';
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(reqBody),
-            headers: new Headers({
-                'Content-Type': 'application/json'
+        let emailFormat = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,10})$/i;
+        if (password.length < 5) {
+            alert('requires more than 5 characters')
+        } else if (!emailFormat.test(email)) {
+            alert('requires (@ .) i.e: me@email.com')
+            console.log(email)
+        } else  {
+            let reqBody = login ? { email: email, password: password } : {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+            
+            let url = login ? 'http://localhost:3001/user/login' : 'http://localhost:3001/user/register';
+            
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(reqBody),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            }).then((response) => response.json())
+            .then((json) => {
+                props.updateToken(json.token)
+                setUserId(json.user.id)
             })
-        }).then((response) => response.json())
-        .then((json) => {
-            props.updateToken(json.token)
-            setUserId(json.user.id)
-        })
+        }
     }
     console.log(userId)
-
+    
     const title = () => {
         return login ? 'Login' : 'Signup';
-
     }
-
     const loginToggle = (e) => {
-        e.preventDefault ();
+        e.preventDefault();
 
         setLogin(!login);
 
@@ -66,6 +71,8 @@ const Auth = (props) => {
         </div>
     ) : null;
 
+
+
 return(
         
         <div> 
@@ -78,7 +85,7 @@ return(
             <br />
             <label htmlFor='password'>Password: </label>
             <br />
-            <input type='text' id='password' value={password} onChange={e => setPassword(e.target.value)} />
+            <input type='password' id='password' value={password} onChange={e => setPassword(e.target.value)} />
             <br />
             <button onClick={loginToggle}>Login/Signup Toggle</button>
             <br />
@@ -87,8 +94,8 @@ return(
         <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}  userId={userId}/> 
         </div>
 
-);
+    );
+}
 
-};
 
 export default Auth;
