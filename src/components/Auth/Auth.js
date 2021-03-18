@@ -29,12 +29,13 @@ const Auth = (props) => {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
+        }).then((response) => response.json())
+        .then((json) => {
+            props.updateToken(json.token)
+            setUserId(json.user.id)
         })
-        .then(response => response.json())
-        .then(json => props.updateToken(json.token))
-       // .then(json => {console.log(json.user)})
     }
-    console.log(userId);
+    console.log(userId)
 
     const title = () => {
         return login ? 'Login' : 'Signup';
@@ -83,7 +84,7 @@ return(
             <br />
             <button type='submit'>Submit User Data</button>
         </form>
-        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}/> 
+        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}  userId={userId}/> 
         </div>
 
 );

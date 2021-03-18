@@ -2,12 +2,12 @@ import {useState, useEffect} from 'react';
 import ReviewEdit from '../ReviewEdit';
 
 const DisplayReviews = (props) =>{
-    console.log(props.movieId);
-    console.log(props.token);
+    //console.log(props.movieId);
+    //console.log(props.token);
+    console.log(props.userId);
     const [reviews, setReviews] = useState([]);
     //const [updateActive, setUpdateActive] = useState(false);
- 
-
+    
     const fetchReviews = () => {
         fetch(`http://localhost:3001/review/${props.movieId}`, {
             method: 'GET',
@@ -21,7 +21,7 @@ const DisplayReviews = (props) =>{
             console.log(data);
         });
     }
-
+    
     const deleteReview = (reviews) => {
         fetch(`http://localhost:3001/review/${reviews.id}`, {
             method: 'DELETE',
@@ -32,36 +32,31 @@ const DisplayReviews = (props) =>{
         })
         .then(() => fetchReviews());
     }
-
-    // const updateOn = () => {
-    //     setUpdateActive(true);
-    // }
-
-    // const updateOff = () => {
-    //     setUpdateActive(false);
-    // }
-
-    useEffect(() => {
-        fetchReviews();
-    },[])
-
     
-
+            useEffect(() => {
+                fetchReviews();
+    },[])
+    
+    
+    
     return(
         <div>
             {
                 reviews.map((reviews, index) => (
                     <div key={index}>
-                        <h3>{reviews.reviewTitle}</h3>
+                        <h4>{reviews.reviewTitle}</h4>
                         <p>{reviews.reviewersPost}</p>
-                        <button onClick={() => {deleteReview(reviews)}}>Delete</button>
-                        <ReviewEdit reviewTitle={reviews.reviewTitle} reviewersPost={reviews.reviewersPost}
-                            token={props.token} reviewId={reviews.id} fetchReviews={fetchReviews}/>
-                        {/* <button onClick={!setUpdateActive}>Edit</button>
+                        {/* <button onClick={!setUpdateActive}>Edit</button> */}
                         {
-                            updateActive ? <ReviewEdit reviewToUpdate={reviewToUpdate} updateOff={updateOff} 
-                            token={props.token} fetchReviews={fetchReviews}/> : <></>
-                        } */}
+                            reviews.owner_id == props.userId ? 
+                                <>
+                                <button onClick={() => {deleteReview(reviews)}}>Delete</button>
+                                <ReviewEdit reviewTitle={reviews.reviewTitle} reviewersPost={reviews.reviewersPost}
+                                token={props.token} reviewId={reviews.id} fetchReviews={fetchReviews}/>
+                                </> 
+                            : <></>
+                        }
+                        <hr/>
                     </div>
                 ))
             }

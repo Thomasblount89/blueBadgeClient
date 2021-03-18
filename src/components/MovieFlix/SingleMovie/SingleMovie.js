@@ -18,10 +18,10 @@ const SingleMovie = props => {
            
             <div className="single-movieContent">
                 <div className='review-create'>
-                        <Reviews movieId={props.singleMovie.id} token={props.token}/>
+                        <Reviews movieId={props.singleMovie.id} token={props.token} userId={props.userId}/>
                 </div>
                 <div className='review-display'>
-                        <DisplayReviews movieId={props.singleMovie.id} token={props.token}/>
+                        <DisplayReviews movieId={props.singleMovie.id} token={props.token} userId={props.userId}/>
                 </div>
             </div>
         </div>

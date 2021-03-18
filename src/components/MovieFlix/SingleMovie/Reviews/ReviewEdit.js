@@ -23,7 +23,7 @@ const ReviewEdit = (props) => {
             ));
     }
     return(
-        <div>
+        <>
             {
                 editReviewToggle ? 
                 <form onSubmit={reviewToUpdate}>
@@ -40,7 +40,7 @@ const ReviewEdit = (props) => {
                     <button onClick={() => setEditReviewToggle(false)}>Back</button>
                 </form> : <button onClick={setEditReviewToggle}>Edit</button>
             }
-        </div>
+        </>
     )
 }
 
