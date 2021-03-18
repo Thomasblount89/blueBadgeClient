@@ -23,8 +23,8 @@ const clearToken = () => {
 
   return (
     <div className="App">
-      <button onClick={clearToken}>Logout</button>
-     <Auth updateToken={updateToken} clickLogout={clearToken} token={sessionToken}/> 
+      {/* <button onClick={clearToken}>Logout</button> */}
+     <Auth updateToken={updateToken} logout={clearToken} token={sessionToken}/> 
     </div>
   );
 }

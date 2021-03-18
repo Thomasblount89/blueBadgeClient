@@ -93,7 +93,7 @@ return(
             <br />
             <button type='submit'>Submit User Data</button>
         </form>
-        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}  userId={userId}/> 
+        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token} logout={logout} userId={userId}/> 
         </div>
 
     );

@@ -43,7 +43,8 @@ console.log(singleMovie);
         <form onSubmit={handleOnSubmit}>
         <input className='search' placeholder='Search Movie' value={searchTerm} onChange={handleOnChange} />
         </form>
-        <h3 className='nav'>Login</h3>
+        <h3 className='nav'></h3>
+        <button onClick={clearToken}>Logout</button>
         </header>
 
 
