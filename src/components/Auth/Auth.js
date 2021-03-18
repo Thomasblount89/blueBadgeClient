@@ -1,5 +1,5 @@
 import {useState} from 'react';
-
+import MovieFlix from '../MovieFlix/MovieFlix';
 
 const Auth = (props) => {
     console.log(props)
@@ -9,6 +9,7 @@ const Auth = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
+    const [userId, setUserId] = useState('');
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -28,10 +29,13 @@ const Auth = (props) => {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
+        }).then((response) => response.json())
+        .then((json) => {
+            props.updateToken(json.token)
+            setUserId(json.user.id)
         })
-        .then(response => response.json())
-        .then(json => props.updateLocalStorage(json.token))
     }
+    console.log(userId)
 
     const title = () => {
         return login ? 'Login' : 'Signup';
@@ -54,7 +58,7 @@ const Auth = (props) => {
         <div>
             <label htmlFor='firstName'>First Name:</label>
             <br />
-            <input type='text' id='firstName' value={firstName} onchange={e => setFirstName(e.target.value)} /> 
+            <input type='text' id='firstName' value={firstName} onChange={e => setFirstName(e.target.value)} /> 
             <br />
             <label htmlFor='lastName'>Last Name:</label>
             <br />
@@ -63,7 +67,8 @@ const Auth = (props) => {
     ) : null;
 
 return(
-    <div>
+        
+        <div> 
         <form onSubmit={handleSubmit}>
             <h1>{title()}</h1>
             {signupFields()}
@@ -71,13 +76,17 @@ return(
             <br />
             <input type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} /> 
             <br />
-            <label htmlFor='password' value={password} onChange={e => setPassword(e.target.value)} />
+            <label htmlFor='password'>Password: </label>
+            <br />
+            <input type='text' id='password' value={password} onChange={e => setPassword(e.target.value)} />
             <br />
             <button onClick={loginToggle}>Login/Signup Toggle</button>
             <br />
             <button type='submit'>Submit User Data</button>
         </form>
-    </div>
+        <MovieFlix clickLogout={props.clickLogout} clickLogout={props.clickLogout} token={props.token}  userId={userId}/> 
+        </div>
+
 );
 
 };
