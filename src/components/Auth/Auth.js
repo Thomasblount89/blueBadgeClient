@@ -17,10 +17,7 @@ const Auth = (props) => {
         let emailFormat = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,10})$/i;
         if (password.length < 5) {
             alert('requires more than 5 characters')
-        } else if (!emailFormat.test(email)) {
-            alert('requires (@ .) i.e: me@email.com')
-            console.log(email)
-        } else  {
+        } else if (emailFormat.test(email)) {
             let reqBody = login ? { email: email, password: password } : {
                 firstName: firstName,
                 lastName: lastName,
@@ -41,6 +38,10 @@ const Auth = (props) => {
                 props.updateToken(json.token)
                 setUserId(json.user.id)
             })
+            
+        } else  {
+            alert('requires (@ .) i.e: me@email.com')
+            console.log(email)
         }
     }
     console.log(userId)
