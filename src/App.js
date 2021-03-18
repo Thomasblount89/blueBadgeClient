@@ -1,8 +1,5 @@
 import Auth from './components/Auth/Auth';
-// import logo from './logo.svg';
-import MovieFlix from './components/MovieFlix/MovieFlix';
 import {useState, useEffect} from 'react';
-
 
 function App() {
 
@@ -26,9 +23,8 @@ const clearToken = () => {
 
   return (
     <div className="App">
-     {/* <MovieFlix clickLogout={clearToken} token={sessionToken}/>  */}
+      <button onClick={clearToken}>Logout</button>
      <Auth updateToken={updateToken} clickLogout={clearToken} token={sessionToken}/> 
-      <button onClick={clearToken}>clearToken</button>
     </div>
   );
 }
