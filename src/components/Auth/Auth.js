@@ -14,13 +14,13 @@ const Auth = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        //let emailFormat = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,10})$/i;
-        // if (password.length < 5) {
-        //     alert('requires more than 5 characters')
-        // } else if (!emailFormat.test(email)) {
-        //     alert('requires (@ .) i.e: me@email.com')
-        //     console.log(email)
-        // } else  {
+        let emailFormat = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,10})$/i;
+        if (password.length < 5) {
+            alert('requires more than 5 characters')
+        } else if (!emailFormat.test(email)) {
+            alert('requires (@ .) i.e: me@email.com')
+            console.log(email)
+        } else  {
             let reqBody = login ? { email: email, password: password } : {
                 firstName: firstName,
                 lastName: lastName,
@@ -41,7 +41,7 @@ const Auth = (props) => {
                 props.updateToken(json.token)
                 setUserId(json.user.id)
             })
-       // }
+        }
     }
     console.log(userId)
     
