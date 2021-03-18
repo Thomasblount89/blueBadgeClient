@@ -4,6 +4,7 @@ import MovieFlix from './components/MovieFlix/MovieFlix';
 import {useState, useEffect} from 'react';
 
 
+
 function App() {
 
 const [sessionToken, setSessionToken] = useState('');
