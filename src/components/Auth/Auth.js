@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import MovieFlix from '../MovieFlix/MovieFlix';
+import APIURL from '../../helpers/environment';
 
 const Auth = (props) => {
     
@@ -27,7 +28,7 @@ const Auth = (props) => {
                 password: password
             };
             
-            let url = login ? 'http://localhost:3001/user/login' : 'http://localhost:3001/user/register';
+            let url = login ? `${APIURL}/user/login` : `${APIURL}/user/register`;
             
             fetch(url, {
                 method: 'POST',

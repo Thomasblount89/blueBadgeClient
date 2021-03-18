@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import APIURL from '../../../../helpers/environment';
 
 const ReviewEdit = (props) => {
     const [editTitle, setEditTitle] = useState(props.reviewTitle);
@@ -8,7 +9,7 @@ const ReviewEdit = (props) => {
         e.preventDefault();
         console.log("in reviewToUpdate");
         console.log(props.reviewId);
-        fetch(`http://localhost:3001/review/${props.reviewId}`, {
+        fetch(`${APIURL}/review/${props.reviewId}`, {
             method:"PUT",
             body: JSON.stringify({reviewTitle: editTitle, reviewersPost: editReview}),
             headers: new Headers({

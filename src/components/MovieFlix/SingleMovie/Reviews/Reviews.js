@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import APIURL from '../../../../helpers/environment';
 
 const SingleReview = (props) => {
     console.log(props.movieId);
@@ -9,7 +10,7 @@ const SingleReview = (props) => {
 
         const handleSubmit = e => {
         e.preventDefault();
-        fetch('http://localhost:3001/review/post', {          
+        fetch(`${APIURL}/review/post`, {          
             method: 'POST',
             body: JSON.stringify({reviewTitle: title, reviewersPost: newReview, movie_id: props.movieId}),
             headers: new Headers({
