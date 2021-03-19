@@ -26,6 +26,7 @@ const clearToken = () => {
     <div className="App">
      <Site updateToken={updateToken} logout={clearToken} token={sessionToken}/>
      {/* <Auth updateToken={updateToken} logout={clearToken} token={sessionToken}/>  */}
+
     </div>
   );
 }

@@ -23,7 +23,6 @@ console.log(singleMovie);
 
     return(
         <>
-         
         {
             props.toggleSingleMovie ? <SingleMovie userId={props.userId} singleMovie={singleMovie} newsetToggleSingleMovie={props.setToggleSingleMovie} token={props.token} userId={props.userId}/> : <DisplayMovies movies={props.movies} setSingleMovie={setSingleMovie} newsetToggleSingleMovie={props.setToggleSingleMovie} token={props.token}/>
         }         

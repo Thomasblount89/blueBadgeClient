@@ -1,12 +1,13 @@
 import {useState, useEffect} from 'react';
 import ReviewEdit from '../ReviewEdit';
+import APIURL from '../../../../../helpers/environment';
 
 const DisplayReviews = (props) =>{
     console.log(props.userId);
     const [reviews, setReviews] = useState([]);
     
     const fetchReviews = () => {
-        fetch(`http://localhost:3001/review/${props.movieId}`, {
+        fetch(`${APIURL}/review/${props.movieId}`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -19,7 +20,7 @@ const DisplayReviews = (props) =>{
     }
     
     const deleteReview = (reviews) => {
-        fetch(`http://localhost:3001/review/${reviews.id}`, {
+        fetch(`${APIURL}/review/${reviews.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 "Content-Type": 'application/json',
