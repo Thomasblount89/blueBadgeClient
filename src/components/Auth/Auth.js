@@ -1,47 +1,10 @@
 import {useState} from 'react';
-import MovieFlix from '../MovieFlix/MovieFlix';
-import APIURL from '../../helpers/environment';
 
 const Auth = (props) => {
-    
-
 
     const [hideSignIn, setHideSignIn] = useState(true);
 
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        let emailFormat = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,10})$/i;
-        if (password.length < 5) {
-            alert('requires more than 5 characters')
-        } else if (emailFormat.test(email)) {
-            let reqBody = login ? { email: email, password: password } : {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password
-            };
-            
-            let url = login ? `${APIURL}/user/login` : `${APIURL}/user/register`;
-            
-            fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(reqBody),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            }).then((response) => response.json())
-            .then((json) => {
-                props.updateToken(json.token)
-                setUserId(json.user.id)
-            })
-            
-        } else  {
-            alert('requires (@ .) i.e: me@email.com')
-            console.log(email)
-        }
-    }
-    console.log(userId)
+ 
     
     const title = () => {
         return props.login ? 'Login' : 'Signup';
