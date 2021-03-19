@@ -2,11 +2,6 @@ import {useState} from 'react';
 
 const Auth = (props) => {
 
-    const [hideSignIn, setHideSignIn] = useState(true);
-
-
- 
-    
     const title = () => {
         return props.login ? 'Login' : 'Signup';
     }
