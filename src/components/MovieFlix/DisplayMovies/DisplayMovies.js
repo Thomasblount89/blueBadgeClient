@@ -6,7 +6,7 @@ const DisplayMovies = props => {
         <div className='movie-container'>
             {
                 props.movies.map(movie => (
-                    <div className='movie' key={movie.id} onClick={() => {props.setSingleMovie(movie); props.setToggleSingleMovie(true)}}>
+                    <div className='movie' key={movie.id} onClick={() => {props.setSingleMovie(movie); props.newsetToggleSingleMovie(true)}}>
                         <img src={IMG_API + movie.poster_path} alt={movie.title} />
                         <div className='movie-info'>
                             <h3>{movie.title}</h3>
