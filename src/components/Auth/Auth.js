@@ -4,6 +4,7 @@ const Auth = (props) => {
 
     const [hideSignIn, setHideSignIn] = useState(true);
 
+
  
     
     const title = () => {
@@ -40,8 +41,6 @@ const Auth = (props) => {
         
         <div className="signIn"> 
             <form onSubmit={props.handleSubmit}>
-            {
-                hideSignIn ? 
                 <div>
                 <h1>{title()}</h1>
                 {signupFields()}
@@ -55,10 +54,8 @@ const Auth = (props) => {
                 <br />
                 <button onClick={loginToggle}>Sign Up Now!</button>
                 <br />
-                </div> : <h1>Welcome To MyFlix</h1>
-            }
-            <button onClick={() => setHideSignIn(!hideSignIn)}type='submit'>Go!</button>
-                
+                <button type='submit'>Go!</button>
+                </div>
             </form> 
 
         </div>
