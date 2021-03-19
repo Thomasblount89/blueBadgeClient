@@ -141,6 +141,19 @@ header{
   text-align: center;
 }
 
+.login-logout{
+  display: flex;
+}
+
+.login-logout p {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.signIn{
+  text-align: center;
+}
+
 .nav{
   font-size: 30px ;
   margin: 0;
@@ -165,4 +178,35 @@ header{
 }
 .over{
   padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  header{
+    background-color: #373b69;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header h3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-logout{
+    display: flex;
+    justify-content: center;
+  }
+
+  .search{
+    font-family: inherit;
+    background-color: transparent;
+    border-radius: 50px;
+    border: 2px solid, #22254b;
+    font-size: 20px;
+    padding: 1px 1px;
+    outline: none;
+    color: white;
+    text-align: center;
+  }
 }
