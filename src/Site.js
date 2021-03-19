@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react';
 import Auth from './components/Auth/Auth';
 import MovieFlix from './components/MovieFlix/MovieFlix';
+import APIURL from './helpers/environment';
 
 function Site(props) {
 
@@ -31,7 +32,7 @@ function Site(props) {
                 password: password
             };
             
-            let url = login ? 'http://localhost:3001/user/login' : 'http://localhost:3001/user/register';
+            let url = login ? `${APIURL}/user/login` : `${APIURL}/user/register`;
             
             fetch(url, {
                 method: 'POST',
