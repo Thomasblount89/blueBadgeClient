@@ -1,56 +1,30 @@
 import {useEffect, useState} from 'react';
-import DisplayMovies from './DisplayMovie/DisplayMovie';
+import DisplayMovies from './DisplayMovies/DisplayMovies';
 import SingleMovie from './SingleMovie/SingleMovie';
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
-const search_API = `https://api.themoviedb.org/3/search/movie?api_key=5dcf7f28a88be0edc01bbbde06f024ab&language=en-US&query=`
+
 
 const MovieFlix = (props) => {
+    console.log(props.userId)
 
-const [movies, setMovies] = useState([]);
+//const [movies, setMovies] = useState([]);
 const [singleMovie, setSingleMovie] = useState({});
-const [toggleSingleMovie, setToggleSingleMovie] = useState(false);
-const [searchTerm, setSearchTerm] = useState('')
+//const [newtoggleSingleMovie, newsetToggleSingleMovie] = useState(false);
 console.log(singleMovie);
 
     useEffect(() => {
         fetch(featured_API)
           .then(res => res.json())
           .then(data => { console.log(data);
-            setMovies(data.results)});
+            props.setMovies(data.results)});
       }, []);
 
-      const handleOnSubmit= (e) => {
-        e.preventDefault();
-    
-        fetch(search_API + searchTerm)
-        .then((res) => res.json())
-        .then((data) => {
-            setMovies(data.results)
-            
-        })
-    }
-
-    const handleOnChange = (e) => {
-        setSearchTerm(e.target.value)
-    }
 
     return(
         <>
-
-        <header>
-        <h3 className='nav'  onClick={() => setToggleSingleMovie(false)}>Home</h3>
-        <form onSubmit={handleOnSubmit}>
-        <input className='search' placeholder='Search Movie' value={searchTerm} onChange={handleOnChange} />
-        </form>
-        <h3 className='nav'></h3>
-        <button onClick={clearToken}>Logout</button>
-        </header>
-
-
-         
         {
-            toggleSingleMovie ? <SingleMovie singleMovie={singleMovie} setToggleSingleMovie={setToggleSingleMovie} token={props.token} userId={props.userId}/> : <DisplayMovies movies={movies} setSingleMovie={setSingleMovie} setToggleSingleMovie={setToggleSingleMovie} token={props.token}/>
+            props.toggleSingleMovie ? <SingleMovie userId={props.userId} singleMovie={singleMovie} newsetToggleSingleMovie={props.setToggleSingleMovie} token={props.token} userId={props.userId}/> : <DisplayMovies movies={props.movies} setSingleMovie={setSingleMovie} newsetToggleSingleMovie={props.setToggleSingleMovie} token={props.token}/>
         }         
         </>
     )

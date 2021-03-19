@@ -1,5 +1,6 @@
-import Auth from './components/Auth/Auth';
+//import Auth from './components/Auth/Auth';
 import {useState, useEffect} from 'react';
+import Site from './Site';
 
 function App() {
 
@@ -23,8 +24,9 @@ const clearToken = () => {
 
   return (
     <div className="App">
-      {/* <button onClick={clearToken}>Logout</button> */}
-     <Auth updateToken={updateToken} logout={clearToken} token={sessionToken}/> 
+     <Site updateToken={updateToken} logout={clearToken} token={sessionToken}/>
+     {/* <Auth updateToken={updateToken} logout={clearToken} token={sessionToken}/>  */}
+
     </div>
   );
 }

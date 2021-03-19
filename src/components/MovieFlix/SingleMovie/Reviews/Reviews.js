@@ -40,7 +40,7 @@ const SingleReview = (props) => {
                     <br />
                     <button type='submit'>Submit</button>
                     <button onClick={() => setReviewToggle(false)}>Back</button>
-                </form> : props.userId ? <button onClick={setReviewToggle}>Leave a Review</button> : <> </>  
+                </form> : props.token ? <button onClick={setReviewToggle}>Leave a Review</button> : <> </>  
             }
             
         </div>
